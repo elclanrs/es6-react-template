@@ -4,6 +4,6 @@
 vendor/
 node_modules/
 bower_components/
-public/lib/css/*
-public/lib/js/*
-public/lib/fonts/*
+lib/css/*
+lib/js/*
+lib/fonts/*
