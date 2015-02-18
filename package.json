@@ -1,0 +1,27 @@
+{
+  "name": "es6-react-template",
+  "scripts": {
+    "css:bower": "find bower_components -name '*.css' -exec cat {} + | cleancss -o lib/css/bower_components.css",
+    "css:fonts": "find bower_components -regex '.*\\.\\(eot\\|svg\\|ttf\\|woff\\|woff2\\)' -exec cp {} lib/fonts \\;",
+    "css:watch": "stylus -u nib -u jeet -u rupture -c -m -w src/styl/index.styl -o lib/css",
+    "css:compile": "stylus -u nib -u jeet -u rupture -c -m src/styl/index.styl -o lib/css",
+    "css:all": "npm run css:bower && npm run css:fonts && npm run css:compile",
+    "js:watch": "watchify src/js/index.js -d -t babelify -t debowerify -t deamdify -o lib/js/index.js",
+    "js:compile": "browserify src/js/index.js -d -t babelify -t debowerify -t deamdify -o lib/js/index.js",
+    "js:minify": "uglifyjs lib/js/index.js -m -c --screw-ie8 -o lib/js/index.min.js",
+    "js:all": "npm run js:compile && npm run js:minify",
+    "sync": "browser-sync start --no-notify --server --files 'lib/js/*.js, lib/css/*.css'",
+    "test": "babel-node test",
+    "start": "npm run css:all && npm run js:compile & npm run css:watch & npm run js:watch & npm run sync",
+    "deploy": "npm run css:all && npm run js:all && npm run test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babelify": "^5.0.3",
+    "deamdify": "^0.1.1",
+    "debowerify": "^1.2.0",
+    "jeet": "^6.1.2",
+    "nib": "^1.1.0",
+    "rupture": "^0.6.1"
+  }
+}
