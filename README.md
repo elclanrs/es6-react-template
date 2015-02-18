@@ -1,6 +1,6 @@
 ### Install global dependencies
 ```
-npm install -g browser-sync coffee-react browserify watchify cleancss stylus nib jeet rupture uglify-js
+npm install -g browser-sync babel browserify watchify cleancss stylus nib jeet rupture uglify-js
 ```
 
 ### Install local dependencies
